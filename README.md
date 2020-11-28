@@ -1,1 +1,1 @@
-# ANTLR4 Tutorial - Python Project# antlr-python
+# ANTLR4 - Python antlr-python

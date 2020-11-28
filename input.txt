@@ -1,2 +1,2 @@
-john SHOUTS: hello @michael /pink/this will work/ :-)
-michael says: hello @john /red/do not shout/ :-) and look at [this awesome website](https:)
+joao SHOUTS: hello @miguel /blue/this will work/ :-)
+miguel says: hello @joao /red/do not shout/ :-)

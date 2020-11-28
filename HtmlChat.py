@@ -3,7 +3,8 @@ from antlr4 import *
 from ChatParser import ChatParser
 from ChatListener import ChatListener
 
-class HtmlChatListener(ChatListener) :
+class HtmlChat(ChatListener) :
+
     def __init__(self, output):
         self.output = output
         self.output.write('<html><head><meta charset="UTF-8"/></head><body>')

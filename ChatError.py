@@ -5,7 +5,7 @@ from ChatListener import ChatListener
 from antlr4.error.ErrorListener import *
 import io
 
-class ChatErrorListener(ErrorListener):
+class ChatError(ErrorListener):
 
     def __init__(self, output):
         self.output = output        

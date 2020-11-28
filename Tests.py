@@ -1,9 +1,8 @@
 from antlr4 import *
 from ChatLexer import ChatLexer
 from ChatParser import ChatParser
-from HtmlChatListener import HtmlChatListener
-from ChatErrorListener import ChatErrorListener
-import sys
+from HtmlChat import HtmlChat
+from ChatError import ChatError
 import unittest
 import io
 
@@ -18,12 +17,11 @@ class TestChatParser(unittest.TestCase):
         self.error = io.StringIO()
         
         parser.removeErrorListeners()        
-        errorListener = ChatErrorListener(self.error)
+        errorListener = ChatError(self.error)
         parser.addErrorListener(errorListener)  
 
         lexer.removeErrorListeners()
-        lexer.addErrorListener(errorListener)  
-
+        lexer.addErrorListener(errorListener)
         self.errorListener = errorListener              
         
         return parser
@@ -32,7 +30,7 @@ class TestChatParser(unittest.TestCase):
         parser = self.setup("John ")
         tree = parser.name()               
     
-        htmlChat = HtmlChatListener(self.output)
+        htmlChat = HtmlChat(self.output)
         walker = ParseTreeWalker()
         walker.walk(htmlChat, tree)              
 
@@ -40,9 +38,8 @@ class TestChatParser(unittest.TestCase):
 
     def test_invalid_name(self):
         parser = self.setup("John-")
-        tree = parser.name()               
-    
-        htmlChat = HtmlChatListener(self.output)
+        tree = parser.name()
+        htmlChat = HtmlChat(self.output)
         walker = ParseTreeWalker()
         walker.walk(htmlChat, tree)              
 
@@ -52,7 +49,7 @@ class TestChatParser(unittest.TestCase):
         parser = self.setup("[okay-now](awesome link, even with spaces)")
         tree = parser.link()        
     
-        htmlChat = HtmlChatListener(self.output)
+        htmlChat = HtmlChat(self.output)
         walker = ParseTreeWalker()
         walker.walk(htmlChat, tree)          
         
@@ -62,7 +59,7 @@ class TestChatParser(unittest.TestCase):
         parser = self.setup("[not-okay-now]](awesome link, even with spaces)")
         tree = parser.link()               
     
-        htmlChat = HtmlChatListener(self.output)
+        htmlChat = HtmlChat(self.output)
         walker = ParseTreeWalker()
         walker.walk(htmlChat, tree)              
         
